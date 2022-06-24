@@ -14,10 +14,6 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
 
-
-    console.log(computerSelection); //remove
-    console.log(playerSelection);
-
     //converts the input into a number
     if (playerSelection == "Rock") playerNumber = 0;
     else if (playerSelection == "Paper") playerNumber = 1;
@@ -48,6 +44,27 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(playRound(computerPlay(), computerPlay()));
 
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    for (let i = 0; i < 5; i++) {
+        
+        playerSelection = prompt("Lets play rock paper scissors. Chose your type: ", "rock");
+        let result = playRound(playerSelection, computerPlay());
+        console.log(result);
 
+        if (result.slice(4,8) == "Win!") {
+            playerScore ++;
+        }
+        else if (result.slice(4,8) == "Lose") {
+            computerScore ++;
+        }
+
+     }
+     console.log("The final score was " + playerScore + " to " + computerScore);
+
+}
+
+game();
